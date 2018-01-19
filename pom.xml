@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+        Copyright 2018 The Jarasandha.io project authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>io.jarasandha</groupId>
+    <artifactId>jarasandha-root</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Ashwin Jayaprakash</name>
+            <email>ashwin.jayaprakash@gmail.com</email>
+            <organizationUrl>http://ashwinjayaprakash.com/</organizationUrl>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
+        <license-maven-plugin.version>3.0</license-maven-plugin.version>
+
+        <caffeine.version>2.5.6</caffeine.version>
+        <dropwizard.version>1.2.0</dropwizard.version>
+        <eclipse-collections.version>9.0.0</eclipse-collections.version>
+        <guava.version>23.3-jre</guava.version>
+        <jackson.version>2.9.2</jackson.version>
+        <java-uuid-generator.version>3.1.4</java-uuid-generator.version>
+        <jcip-annotations.version>1.0</jcip-annotations.version>
+        <logback.version>1.1.7</logback.version>
+        <lombok.version>1.16.18</lombok.version>
+        <lucene-core.version>5.3.1</lucene-core.version>
+        <netty.version>4.1.5.Final</netty.version>
+        <slf4j-api.version>1.7.20</slf4j-api.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <picocli.version>1.0.1</picocli.version>
+
+        <junit.version>4.12</junit.version>
+        <mockito.version>1.10.19</mockito.version>
+    </properties>
+
+    <modules>
+        <module>jarasandha-util</module>
+        <module>jarasandha-store</module>
+        <module>jarasandha-store-filesystem</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Start children -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>jarasandha-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>jarasandha-util</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>jarasandha-store</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>jarasandha-store-filesystem</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- End children -->
+
+            <!-- Start core -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.jcip</groupId>
+                <artifactId>jcip-annotations</artifactId>
+                <version>${jcip-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+            <!-- End core -->
+
+            <!-- Start core collections and utils -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.collections</groupId>
+                <artifactId>eclipse-collections-api</artifactId>
+                <version>${eclipse-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.collections</groupId>
+                <artifactId>eclipse-collections</artifactId>
+                <version>${eclipse-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.uuid</groupId>
+                <artifactId>java-uuid-generator</artifactId>
+                <version>${java-uuid-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-metrics</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <!-- End core collections and utils -->
+
+            <!-- Start Jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- End Jackson -->
+
+            <!-- Start Cache -->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+            <!-- End Cache -->
+
+            <!-- Start compression and related -->
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-core</artifactId>
+                <version>${lucene-core.version}</version>
+            </dependency>
+            <!-- End compression and related -->
+
+            <!-- Start IO -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-buffer</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <!-- End IO -->
+
+            <!-- Start CLI -->
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli</artifactId>
+                <version>${picocli.version}</version>
+            </dependency>
+            <!-- End CLI -->
+
+            <!-- Start test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- End test -->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>-Xms1g -Xmx1g -XX:MaxDirectMemorySize=2g</argLine>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${license-maven-plugin.version}</version>
+                <configuration>
+                    <header>license.txt</header>
+                    <excludes>
+                        <exclude>**/*.sh</exclude>
+                        <exclude>license.txt</exclude>
+                        <exclude>lombok.config</exclude>
+                        <exclude>data/**</exclude>
+                        <exclude>backup/**</exclude>
+                    </excludes>
+                    <mapping>
+                        <proto>DOUBLESLASH_STYLE</proto>
+                    </mapping>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
