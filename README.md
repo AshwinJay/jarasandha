@@ -27,6 +27,7 @@ It is composed of these parts:
 1. The "reader" and related classes provide efficient caching of files and blocks for repeated reads
 1. It also has hooks to read from external stores
 1. It is meant to be embedded inside your application that serves records from a remote archive and a local file system
+1. Both the reader and writer components make heavy use of Netty's [Bytebuf](http://netty.io/4.0/api/index.html?io/netty/buffer/ByteBuf.html) to keep heap and in general memory usage low with a controllable budget
 
 ### What it is not
 Jarasandha does not aim to compete with systems or libraries like [Apache ORC](https://orc.apache.org/) or [Apache Parquet](https://parquet.apache.org/) or [PalDB](https://github.com/linkedin/PalDB) or [embedded Key-Value stores](https://github.com/lmdbjava/benchmarks) or [Ambry](https://github.com/linkedin/ambry/wiki) or [Apache HBase](https://hbase.apache.org/).
