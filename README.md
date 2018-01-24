@@ -5,7 +5,7 @@
 # Introduction
 
 ### What is it?
-Jarasandha is a small Java library to help build an archive of records. It has very few moving parts, embraces immutability and delegates advanced functions to external services using interfaces.
+Jarasandha is a small Java library to help build an archive of records. It has very few moving parts, embraces immutability, efficient compression, buffer management and zero copy transfer. It delegates advanced functions to external services using interfaces.
 
 It is composed of these parts:
 
@@ -24,7 +24,7 @@ It is composed of these parts:
 #### Reader
 1. Records can be retrieved using a "reader" by providing its logical position
 1. It also supports iterating over the records or blocks of records in the file
-1. The "reader" and related classes provide efficient caching of files and blocks for repeated reads
+1. The "reader" and related classes provide efficient, selective loading and caching of blocks and files for repeated reads
 1. It also has hooks to read from external stores
 1. It is meant to be embedded inside your application that serves records from a remote archive and a local file system
 1. Both the reader and writer components make heavy use of Netty's [Bytebuf](http://netty.io/4.0/api/index.html?io/netty/buffer/ByteBuf.html) to keep heap and in general memory usage low with a controllable budget
