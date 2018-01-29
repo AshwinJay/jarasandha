@@ -6,6 +6,6 @@ cache:
   directories:
     - "$HOME/.m2/repository"
 install:
-  - mvn clean install -DskipTests=true -e -B
+  - mvn clean package -DskipTests=true -e -B
 script:
 - mvn test -e -B
