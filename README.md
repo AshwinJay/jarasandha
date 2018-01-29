@@ -2,6 +2,8 @@
 
 `⚠️ This document is a work in progress`
 
+[![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)
+
 # Introduction
 
 ### What is it?
