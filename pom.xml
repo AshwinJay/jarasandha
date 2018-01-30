@@ -277,6 +277,7 @@
                         <exclude>**/*.sh</exclude>
                         <exclude>license.txt</exclude>
                         <exclude>lombok.config</exclude>
+                        <exclude>_config.yml</exclude>
                         <exclude>data/**</exclude>
                         <exclude>backup/**</exclude>
                     </excludes>
