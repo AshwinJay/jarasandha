@@ -48,6 +48,9 @@ Assuming that the keys and metadata to service queries are much smaller than the
 ### What's with the name?
 The name (`Jarasandha`) is a reference to an [Indian mythological character named Jarasandha](https://en.wikipedia.org/wiki/Jarasandha) who was put back together from two halves. I found the name vaguely related to this Java library which puts your records back together from blocks of compressed records in a file. Well, I did say - "vaguely related".
 
+### License
+The Jarasandha library is licensed under the [Apache License](LICENSE).
+
 # Basics
 Read & Write
 
