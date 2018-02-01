@@ -1,6 +1,6 @@
 `⚠️ This document is a work in progress`
 
-[![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)
+[![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![codecov](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha)
 
 # Introduction
 
