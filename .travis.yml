@@ -7,5 +7,7 @@ cache:
     - "$HOME/.m2"
 install:
   - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -e -B
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 script:
 - mvn install test -e -B
