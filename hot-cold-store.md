@@ -1,4 +1,4 @@
-# Hot-cold archive
+# Hot-cold store
 
 This page contains instructions to setup a userland [file system (FUSE)](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) over an [S3](https://aws.amazon.com/s3/) compatible system. It could be AWS S3 itself or Minio which emulates the S3 interface. It assumes Mac OS.
 
