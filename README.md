@@ -91,3 +91,7 @@ CLI importer
 Writing - NoOpFileWriteProgressListener to push files to S3
 
 Reading - DefaultFileEventListener to build archiving and retrieval
+
+# Hot-cold store
+
+See [Hot-cold-store](#hot-cold-store.md).
