@@ -94,4 +94,4 @@ Reading - DefaultFileEventListener to build archiving and retrieval
 
 # Hot-cold store
 
-See [Hot-cold-store](#hot-cold-store.md).
+See [Hot-cold-store](hot-cold-store.md).
