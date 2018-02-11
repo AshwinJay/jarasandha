@@ -1,6 +1,6 @@
 `⚠️ This document is a work in progress`
 
-[![build status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![code coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![Code Coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c46c16421cb04033b0439eb385917bd2)](https://www.codacy.com/app/AshwinJay/jarasandha?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AshwinJay/jarasandha&amp;utm_campaign=Badge_Grade) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
 
 <!--ts-->
 # Table of Contents
