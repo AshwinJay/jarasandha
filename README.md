@@ -39,9 +39,10 @@ Jarasandha does not aim to compete with systems or libraries like [Apache ORC](h
 
 
 ### Possible use cases
-As part of a light weight archival system (hot-cold storage) that stores records in Jarasandha, moves the files out to object stores like [Amazon S3](https://aws.amazon.com/s3/) or [Minio](https://minio.io/) when not in use.
 
-Perhaps the records' keys and metadata are stored in key-value stores or search indices. The record itself could be inside Jarasandha files.
+1) [Hot-cold-store](hot-cold-store.md): Store records in Jarasandha, move the files out to object stores like [Amazon S3](https://aws.amazon.com/s3/) or [Minio](https://minio.io/) when they are not in use.
+
+Jarasandha can be the underlying layer that efficiently stores and retrieves records and blocks based on logical key positions. A second index layer using Lucene or RocksDB could provide a more advanced mapping from keys, labels or queries to Jarasandha's logical key positions.
 
 Assuming that the keys and metadata to service queries are much smaller than the actual records, they can be stored onsite, on fast and expensive hardware. The actual record can then be retrieved from the Jarasandha files and blocks that are cached locally or downloaded on demand from remote object stores.
 
@@ -91,7 +92,3 @@ CLI importer
 Writing - NoOpFileWriteProgressListener to push files to S3
 
 Reading - DefaultFileEventListener to build archiving and retrieval
-
-# Hot-cold store
-
-See [Hot-cold-store](hot-cold-store.md).
