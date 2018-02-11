@@ -40,11 +40,15 @@ Jarasandha does not aim to compete with systems or libraries like [Apache ORC](h
 
 ### Possible use cases
 
-1) [Hot-cold-store](hot-cold-store.md): Store records in Jarasandha, move the files out to object stores like [Amazon S3](https://aws.amazon.com/s3/) or [Minio](https://minio.io/) when they are not in use.
+#### Hot-cold store
+
+Store records in Jarasandha, move the files out to object stores like [Amazon S3](https://aws.amazon.com/s3/) or [Minio](https://minio.io/) when they are not in use.
 
 Jarasandha can be the underlying layer that efficiently stores and retrieves records and blocks based on logical key positions. A second index layer using Lucene or RocksDB could provide a more advanced mapping from keys, labels or queries to Jarasandha's logical key positions.
 
 Assuming that the keys and metadata to service queries are much smaller than the actual records, they can be stored onsite, on fast and expensive hardware. The actual record can then be retrieved from the Jarasandha files and blocks that are cached locally or downloaded on demand from remote object stores.
+
+See [Hot-cold-store](hot-cold-store.md) for details.
 
 ### What's with the name?
 The name (`Jarasandha`) is a reference to an [Indian mythological character named Jarasandha](https://en.wikipedia.org/wiki/Jarasandha) who was put back together from two halves. I found the name vaguely related to this Java library which puts your records back together from blocks of compressed records in a file. Well, I did say - "vaguely related".
