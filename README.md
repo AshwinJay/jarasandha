@@ -3,18 +3,18 @@
 [![build status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![code coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
 
 <!--ts-->
-Table of Contents
+# Table of Contents
 
    * [Introduction](#introduction)
-         * [What is it?](#what-is-it)
-            * [File](#file)
-            * [Writer](#writer)
-            * [Reader](#reader)
-         * [What it is not](#what-it-is-not)
-         * [Possible use cases](#possible-use-cases)
-            * [Hot-cold store](#hot-cold-store)
-         * [What's with the name?](#whats-with-the-name)
-         * [License](#license)
+     * [What is it?](#what-is-it)
+        * [File](#file)
+        * [Writer](#writer)
+        * [Reader](#reader)
+     * [What it is not](#what-it-is-not)
+     * [Possible use cases](#possible-use-cases)
+        * [Hot-cold store](#hot-cold-store)
+     * [What's with the name?](#whats-with-the-name)
+   * [License](#license)
    * [Basics](#basics)
    * [Example](#example)
    * [Architecture](#architecture)
@@ -72,7 +72,7 @@ See [Hot-cold store](doc/hot-cold-store.md) for details.
 ### What's with the name?
 The name (`Jarasandha`) is a reference to an [Indian mythological character named Jarasandha](https://en.wikipedia.org/wiki/Jarasandha) who was put back together from two halves. I found the name vaguely related to this Java library which puts your records back together from blocks of compressed records in a file. Well, I did say - "vaguely related".
 
-### License
+# License
 The Jarasandha library is licensed under the [Apache License](LICENSE).
 
 # Basics
