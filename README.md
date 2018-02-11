@@ -2,6 +2,25 @@
 
 [![build status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![code coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
 
+<!--ts-->
+Table of Contents
+
+   * [Introduction](#introduction)
+         * [What is it?](#what-is-it)
+            * [File](#file)
+            * [Writer](#writer)
+            * [Reader](#reader)
+         * [What it is not](#what-it-is-not)
+         * [Possible use cases](#possible-use-cases)
+            * [Hot-cold store](#hot-cold-store)
+         * [What's with the name?](#whats-with-the-name)
+         * [License](#license)
+   * [Basics](#basics)
+   * [Example](#example)
+   * [Architecture](#architecture)
+   * [Misc](#misc)
+<!--te-->
+
 # Introduction
 
 ### What is it?
