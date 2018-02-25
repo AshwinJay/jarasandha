@@ -337,10 +337,17 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>
+                javadoc-and-source
+            </id>
+            <activation>
+                <property>
+                    <name>skipDocAndSrc</name>
+                    <value>false</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
@@ -374,7 +381,13 @@
                             </execution>
                         </executions>
                     </plugin>
-
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
