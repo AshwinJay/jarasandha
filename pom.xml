@@ -49,8 +49,8 @@
     </developers>
 
     <scm>
-        <connection>scm:https://github.com/AshwinJay/jarasandha.git</connection>
-        <developerConnection>scm:https://github.com/AshwinJay/jarasandha.git</developerConnection>
+        <connection>scm:git:https://github.com/AshwinJay/jarasandha.git</connection>
+        <developerConnection>scm:git:https://github.com/AshwinJay/jarasandha.git</developerConnection>
         <url>https://github.com/AshwinJay/jarasandha.git</url>
     </scm>
 
