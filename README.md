@@ -1,6 +1,6 @@
 |[![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![Code Coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c46c16421cb04033b0439eb385917bd2)](https://www.codacy.com/app/AshwinJay/jarasandha?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AshwinJay/jarasandha&amp;utm_campaign=Badge_Grade)|
 | :---: |
-|[![Maven Central](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)](http://mvnrepository.com/artifact/io.github.ashwinjay/jarasandha-store-filesystem) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)|
+|[![Maven Central](https://img.shields.io/maven-central/v/io.github.ashwinjay/jarasandha-store-filesystem.svg)](http://mvnrepository.com/artifact/io.github.ashwinjay/jarasandha-store-filesystem) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)|
 |⚠️ This document is a work in progress|
 
 <!--ts-->
