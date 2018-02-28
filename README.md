@@ -2,6 +2,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ashwinjay/jarasandha-store-filesystem.svg)](http://mvnrepository.com/artifact/io.github.ashwinjay/jarasandha-store-filesystem) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
 
 |⚠️ This document is a work in progress|
+| :---: |
 
 <!--ts-->
 # Table of Contents
