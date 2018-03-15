@@ -40,7 +40,7 @@ class CacheAwareTailReader implements TailReader, AutoCloseable {
     private final MetricRegistry metricRegistry;
     private final String metricsFamily;
 
-    CacheAwareTailReader(FileReadersParameters parameters, String metricsFamily) {
+    CacheAwareTailReader(ReadersParameters parameters, String metricsFamily) {
         this(
                 Caffeine
                         .<FileId, Tail>newBuilder()

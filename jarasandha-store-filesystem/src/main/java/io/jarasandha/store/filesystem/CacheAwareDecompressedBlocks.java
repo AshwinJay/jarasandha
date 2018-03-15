@@ -45,7 +45,7 @@ class CacheAwareDecompressedBlocks implements AutoCloseable {
     @Getter(AccessLevel.PACKAGE)
     private final AtomicLong decompressedBytesInCache;
 
-    CacheAwareDecompressedBlocks(FileReadersParameters parameters, String metricsFamily) {
+    CacheAwareDecompressedBlocks(ReadersParameters parameters, String metricsFamily) {
         this.decompressedBytesInCache = new AtomicLong();
 
         final BlockEventListener blockEventListener = parameters.blockEventListener();

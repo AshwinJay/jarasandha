@@ -17,7 +17,7 @@ package io.jarasandha.store.filesystem.cli;
 
 import io.jarasandha.store.api.Block;
 import io.jarasandha.store.api.StoreReader;
-import io.jarasandha.store.filesystem.FileReaders;
+import io.jarasandha.store.filesystem.Readers;
 import io.jarasandha.store.filesystem.shared.FileId;
 import io.jarasandha.util.collection.ImmutableBitSet;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +43,7 @@ class Inspector implements Runnable {
 
         for (File inputFile : inputFiles) {
             final FileId fileId = FileId.from(inputFile);
-            try (StoreReader<FileId> fileReader = FileReaders.newFileReader(fileId, inputFile, DEFAULT)) {
+            try (StoreReader<FileId> fileReader = Readers.newFileReader(fileId, inputFile, DEFAULT)) {
                 final long totalNumRecords = fileReader
                         .readIndex(ImmutableBitSet.newBitSetWithAllPositionsTrue())
                         .blocks()

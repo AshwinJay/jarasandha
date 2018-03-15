@@ -130,7 +130,7 @@ public class FileWriterBasicTest extends AbstractTestWithAllocator {
                         final FileWriter writer = new FileWriter(
                                 randomNewFileId(), file, 1024, 128,
                                 allocator, new NoOpFileWriteProgressListener(),
-                                twin.getOne(), twin.getTwo(), FileWriterParameters.SIZE_CHUNK_BYTES);
+                                twin.getOne(), twin.getTwo(), WriterParameters.SIZE_CHUNK_BYTES);
 
                         assertEquals(0, writer.getRecordsWrittenInBlockSoFar());
                         assertFalse(writer.flushBlock());

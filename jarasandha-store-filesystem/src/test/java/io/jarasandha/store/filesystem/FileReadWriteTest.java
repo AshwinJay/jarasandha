@@ -301,7 +301,7 @@ public class FileReadWriteTest extends AbstractTestWithAllocator {
                             estimator.estimatedSizeOfCompleteFileBytes(), estimator.uncompressedBlockSizeLimitBytes(),
                             allocator, new NoOpFileWriteProgressListener(),
                             false /*Blocks not compressed*/, true/*Index compressed*/,
-                            FileWriterParameters.SIZE_CHUNK_BYTES)
+                            WriterParameters.SIZE_CHUNK_BYTES)
             ) {
                 for (int i = 0; i < estimator.estimatedTotalNumRecords(); i++) {
                     record = JsonSampleCreator.newRecord(random);
@@ -376,7 +376,7 @@ public class FileReadWriteTest extends AbstractTestWithAllocator {
                             estimator.estimatedSizeOfCompleteFileBytes(), estimator.uncompressedBlockSizeLimitBytes(),
                             allocator, new NoOpFileWriteProgressListener(),
                             false /*Blocks not compressed*/, false /*Index not compressed*/,
-                            FileWriterParameters.SIZE_CHUNK_BYTES)
+                            WriterParameters.SIZE_CHUNK_BYTES)
             ) {
                 for (int i = 0; i < estimator.estimatedTotalNumRecords(); i++) {
                     record = JsonSampleCreator.newRecord(random);

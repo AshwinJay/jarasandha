@@ -41,7 +41,7 @@ class DebugFileWriter extends FileWriter {
                 randomNewFileId(), file,
                 fileSizeBytesLimit, uncompressedBytesPerBlockLimit,
                 allocator, listener,
-                compressBlocks, compressIndex, FileWriterParameters.SIZE_CHUNK_BYTES
+                compressBlocks, compressIndex, WriterParameters.SIZE_CHUNK_BYTES
         );
     }
 

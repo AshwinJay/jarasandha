@@ -1,12 +1,12 @@
 /**
- *     Copyright 2018 The Jarasandha.io project authors
- *
+ * Copyright 2018 The Jarasandha.io project authors
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -66,7 +66,7 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
  */
 @ThreadSafe
 @Slf4j
-public final class FileReaders implements StoreReaders<FileId> {
+public final class Readers implements StoreReaders<FileId> {
     public static final String METRICS_FILE_TAILS = "/fileTails";
     public static final String METRICS_INDEX_BLOCKS = "/indexBlocks";
     public static final String METRICS_FILE_READERS = "/fileReaders";
@@ -81,7 +81,7 @@ public final class FileReaders implements StoreReaders<FileId> {
     private final Collection<String> metricNames;
     private final MetricRegistry metricRegistry;
 
-    public FileReaders(FileReadersParameters parameters) {
+    public Readers(ReadersParameters parameters) {
         parameters.validate();
 
         this.gate = new Gate();
@@ -171,7 +171,7 @@ public final class FileReaders implements StoreReaders<FileId> {
         return newFileReader(fileId, file, allocator, new DebugTailReader(), new DebugBlockReader());
     }
 
-    public static FileReader newFileReader(
+    private static FileReader newFileReader(
             FileId fileId, File file, ByteBufAllocator allocator, TailReader fileTailReader, BlockReader blockReader
     ) {
         return new FileReader(file, fileId, allocator, fileTailReader, blockReader);

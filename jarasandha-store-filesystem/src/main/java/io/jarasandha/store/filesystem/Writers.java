@@ -1,12 +1,12 @@
 /**
- *     Copyright 2018 The Jarasandha.io project authors
- *
+ * Copyright 2018 The Jarasandha.io project authors
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,6 +16,7 @@
 package io.jarasandha.store.filesystem;
 
 import io.jarasandha.store.api.StoreWriteProgressListener;
+import io.jarasandha.store.api.StoreWriter;
 import io.jarasandha.store.api.StoreWriters;
 import io.jarasandha.store.filesystem.shared.FileBlockInfo;
 import io.jarasandha.store.filesystem.shared.FileId;
@@ -35,19 +36,29 @@ import java.util.stream.Stream;
 import static com.google.common.base.Preconditions.checkState;
 
 /**
+ * This is a utility class to create a lot of related {@link FileWriter}s.
+ * <p>
  * Created by ashwin.jayaprakash.
  */
 @Slf4j
 @NotThreadSafe
-public class FileWriters implements StoreWriters<FileId, FileWriterParameters> {
+public class Writers implements StoreWriters<FileId, WriterParameters> {
     private final Files files;
     private final String fileExtension;
     private final ByteBufAllocator allocator;
     private final Supplier<StoreWriteProgressListener<FileId, FileInfo, FileBlockInfo>> listeners;
     private final Gate gate;
 
-    public FileWriters(Files files, String fileExtension, ByteBufAllocator allocator,
-                       Supplier<StoreWriteProgressListener<FileId, FileInfo, FileBlockInfo>> listeners) {
+    /**
+     * @param files         Used to create files within a directory context.
+     * @param fileExtension The file extention to be used for all the files that are created and written to. The files
+     *                      are written inside the directory provided by "files". The extension is the text after the
+     *                      "." in the fully qualified file name.
+     * @param allocator
+     * @param listeners
+     */
+    public Writers(Files files, String fileExtension, ByteBufAllocator allocator,
+                   Supplier<StoreWriteProgressListener<FileId, FileInfo, FileBlockInfo>> listeners) {
         this.files = files;
         this.fileExtension = fileExtension;
         this.allocator = allocator;
@@ -59,13 +70,23 @@ public class FileWriters implements StoreWriters<FileId, FileWriterParameters> {
         return fileExtension;
     }
 
+    /**
+     * @return {@link Pair}s of the {@link File} and the "UUID" of the file. These are all the files under the directory.
+     */
     @CallerMustRelease
     public Stream<Pair<File, String>> showAllFiles() {
         return files.showAll();
     }
 
+    /**
+     * Similar to {@link #newStoreWriter(FileId, WriterParameters)} but the destination {@link FileId} is generated
+     * at random but within the directory provided by {@link Files}.
+     *
+     * @param parameters
+     * @return
+     */
     @Override
-    public FileWriter newStoreWriter(FileWriterParameters parameters) {
+    public StoreWriter<FileId> newStoreWriter(WriterParameters parameters) {
         checkState(gate.isOpen());
 
         final Pair<File, FileId> pair = files.newFile(fileExtension);
@@ -74,7 +95,7 @@ public class FileWriters implements StoreWriters<FileId, FileWriterParameters> {
                 pair.getTwo(), pair.getOne(),
                 parameters.fileSizeBytesLimit(), parameters.uncompressedBytesPerBlockLimit(),
                 allocator, listener,
-                parameters.blocksCompressed(), parameters.indexCompressed(), FileWriterParameters.SIZE_CHUNK_BYTES
+                parameters.blocksCompressed(), parameters.indexCompressed(), WriterParameters.SIZE_CHUNK_BYTES
         );
     }
 
@@ -88,7 +109,7 @@ public class FileWriters implements StoreWriters<FileId, FileWriterParameters> {
      *                          creating the store.
      */
     @Override
-    public FileWriter newStoreWriter(FileId fileId, FileWriterParameters parameters) {
+    public StoreWriter<FileId> newStoreWriter(FileId fileId, WriterParameters parameters) {
         checkState(gate.isOpen());
 
         final File file = files.toFile(fileId);
@@ -106,10 +127,10 @@ public class FileWriters implements StoreWriters<FileId, FileWriterParameters> {
         return newFileWriter(fileId, file, listener, allocator, parameters);
     }
 
-    public static FileWriter newFileWriter(
+    public static StoreWriter<FileId> newFileWriter(
             FileId fileId, File file,
             StoreWriteProgressListener<FileId, FileInfo, FileBlockInfo> listener,
-            ByteBufAllocator allocator, FileWriterParameters parameters
+            ByteBufAllocator allocator, WriterParameters parameters
     ) {
         return new FileWriter(
                 fileId, file,

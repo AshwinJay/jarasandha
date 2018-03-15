@@ -16,7 +16,7 @@
 package io.jarasandha.store.filesystem.cli;
 
 import com.google.common.collect.Lists;
-import io.jarasandha.store.filesystem.FileWriterParameters;
+import io.jarasandha.store.filesystem.WriterParameters;
 import io.jarasandha.util.misc.ByteSize.Unit;
 import lombok.Getter;
 import lombok.Setter;
@@ -77,7 +77,7 @@ public class ImportCommand implements Runnable {
         if (printUsage) {
             CommandLine.usage(this, System.out);
         } else {
-            FileWriterParameters writerParameters = new FileWriterParameters()
+            WriterParameters writerParameters = new WriterParameters()
                     .fileSizeBytesLimit(fileSizeBytesLimit)
                     .uncompressedBytesPerBlockLimit(uncompressedBytesPerBlockLimit)
                     .blocksCompressed(blocksCompressed)

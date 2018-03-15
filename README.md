@@ -84,7 +84,7 @@ Efficiency
 
 Example - based on Importer and FileReadersTest
 
-Compression, blocks, memory efficiency of ByteBuf
+Compression, blocks, memory efficiency of ByteBuf, native heap size
 
 Pre-reqs: Java 8, Maven
 

@@ -190,7 +190,7 @@ public class FileReadWritePerfTest {
                 FileWriter writer = new FileWriter(fileId, file,
                         estimator.estimatedSizeOfCompleteFileBytes(), estimator.uncompressedBlockSizeLimitBytes(),
                         allocator, new NoOpFileWriteProgressListener(),
-                        blocksCompressed, indexCompressed, FileWriterParameters.SIZE_CHUNK_BYTES)
+                        blocksCompressed, indexCompressed, WriterParameters.SIZE_CHUNK_BYTES)
         ) {
             for (int i = 0; i < estimator.estimatedTotalNumRecords(); i++) {
                 record = JsonSampleCreator.newRecord(random);

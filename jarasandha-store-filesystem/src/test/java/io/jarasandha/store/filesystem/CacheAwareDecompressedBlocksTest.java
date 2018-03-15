@@ -40,7 +40,7 @@ public class CacheAwareDecompressedBlocksTest {
     @Test
     public void testByteBufRefCount() throws InterruptedException {
         final SynchronousQueue<FileBlockPosition> blockRemovalQueue = new SynchronousQueue<>();
-        final FileReadersParameters parameters = new FileReadersParameters()
+        final ReadersParameters parameters = new ReadersParameters()
                 .maxTotalUncompressedBlockBytes(2048)
                 .expireAfterAccess(Duration.ofDays(2))
                 .metricRegistry(new MetricRegistry())
