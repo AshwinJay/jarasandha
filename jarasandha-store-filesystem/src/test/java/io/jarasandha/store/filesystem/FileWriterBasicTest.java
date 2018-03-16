@@ -50,7 +50,7 @@ public class FileWriterBasicTest extends AbstractTestWithAllocator {
     public TemporaryFolder folder = new TemporaryFolder();
 
     public FileWriterBasicTest() {
-        super(Level.DEBUG);
+        super(Level.INFO);
     }
 
     @Test(expected = IllegalArgumentException.class)

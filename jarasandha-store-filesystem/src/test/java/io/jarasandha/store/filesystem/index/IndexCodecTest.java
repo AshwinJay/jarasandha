@@ -58,7 +58,7 @@ public class IndexCodecTest extends AbstractTestWithAllocator {
     public TemporaryFolder folder = new TemporaryFolder();
 
     public IndexCodecTest() {
-        super(Level.DEBUG);
+        super(Level.INFO);
     }
 
     @Test
