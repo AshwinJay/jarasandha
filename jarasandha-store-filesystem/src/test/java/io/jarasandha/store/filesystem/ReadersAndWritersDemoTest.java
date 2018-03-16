@@ -169,7 +169,7 @@ public class ReadersAndWritersDemoTest extends AbstractTest {
         try (Readers readers = new Readers(readersParameters)) {
             for (SampleRecord sampleRecord : sampleRecordsToVerify) {
                 //Read the sample records and compare them with the expected value.
-                log.info("Reading [{}] from file [{}]", sampleRecord.recordLocation, sampleRecord.fileId);
+                log.info("Reading [{}] from file [{}] {}", sampleRecord.recordLocation, sampleRecord.fileId, readers);
 
                 final ByteBuf record = readers.readRecord(sampleRecord.fileId, sampleRecord.recordLocation);
                 try {
