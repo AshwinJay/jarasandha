@@ -111,7 +111,7 @@ class FileWriter implements StoreWriter<FileId> {
                StoreWriteProgressListener<FileId, FileInfo, FileBlockInfo> listener) {
         this(
                 fileId, file, fileSizeBytesLimit, uncompressedBytesPerBlockLimit,
-                allocator, listener, true, true, FileWriterParameters.SIZE_CHUNK_BYTES
+                allocator, listener, true, true, WriterParameters.SIZE_CHUNK_BYTES
         );
     }
 

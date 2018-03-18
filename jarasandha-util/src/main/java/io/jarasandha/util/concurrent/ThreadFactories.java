@@ -24,7 +24,7 @@ import java.util.concurrent.ThreadFactory;
  * Created by ashwin.jayaprakash.
  */
 @Slf4j
-public class ThreadFactories {
+public final class ThreadFactories {
     private ThreadFactories() {
     }
 

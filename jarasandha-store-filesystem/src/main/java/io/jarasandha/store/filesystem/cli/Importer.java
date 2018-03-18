@@ -20,8 +20,8 @@ import io.jarasandha.store.api.LogicalRecordLocation;
 import io.jarasandha.store.api.StoreException;
 import io.jarasandha.store.api.StoreException.StoreFullException;
 import io.jarasandha.store.api.StoreWriter;
-import io.jarasandha.store.filesystem.FileWriterParameters;
-import io.jarasandha.store.filesystem.FileWriters;
+import io.jarasandha.store.filesystem.WriterParameters;
+import io.jarasandha.store.filesystem.Writers;
 import io.jarasandha.store.filesystem.NoOpFileWriteProgressListener;
 import io.jarasandha.store.filesystem.shared.FileBlockInfo;
 import io.jarasandha.store.filesystem.shared.FileId;
@@ -56,9 +56,9 @@ class Importer implements Runnable {
     static final String DIR_TEST_MODE = "/dev/null";
     private final List<File> inputFiles;
     private final File outputDir;
-    private final FileWriterParameters writerParameters;
+    private final WriterParameters writerParameters;
 
-    Importer(List<File> inputFiles, File outputDir, FileWriterParameters writerParameters) {
+    Importer(List<File> inputFiles, File outputDir, WriterParameters writerParameters) {
         this.inputFiles = checkNotNull(inputFiles);
         this.outputDir = checkNotNull(outputDir);
         this.writerParameters = checkNotNull(writerParameters).validate();
@@ -171,12 +171,12 @@ class Importer implements Runnable {
 
     private static class WriterManager {
         private final File outputDir;
-        private final FileWriterParameters writerParameters;
+        private final WriterParameters writerParameters;
         private final List<File> filesWrittenTo;
         private long totalRecordsCounter;
         private StoreWriter<FileId> fileWriter = null;
 
-        private WriterManager(File outputDir, FileWriterParameters writerParameters) {
+        private WriterManager(File outputDir, WriterParameters writerParameters) {
             this.outputDir = outputDir;
             this.writerParameters = writerParameters;
             this.filesWrittenTo = new LinkedList<>();
@@ -246,7 +246,7 @@ class Importer implements Runnable {
                 }
             };
 
-            fileWriter = FileWriters
+            fileWriter = Writers
                     .newFileWriter(fileId, file, progressListener, ByteBufAllocator.DEFAULT, writerParameters);
         }
 

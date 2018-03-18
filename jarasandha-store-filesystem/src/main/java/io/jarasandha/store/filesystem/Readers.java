@@ -66,7 +66,7 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
  */
 @ThreadSafe
 @Slf4j
-public final class FileReaders implements StoreReaders<FileId> {
+public final class Readers implements StoreReaders<FileId> {
     public static final String METRICS_FILE_TAILS = "/fileTails";
     public static final String METRICS_INDEX_BLOCKS = "/indexBlocks";
     public static final String METRICS_FILE_READERS = "/fileReaders";
@@ -81,7 +81,7 @@ public final class FileReaders implements StoreReaders<FileId> {
     private final Collection<String> metricNames;
     private final MetricRegistry metricRegistry;
 
-    public FileReaders(FileReadersParameters parameters) {
+    public Readers(ReadersParameters parameters) {
         parameters.validate();
 
         this.gate = new Gate();
@@ -171,7 +171,7 @@ public final class FileReaders implements StoreReaders<FileId> {
         return newFileReader(fileId, file, allocator, new DebugTailReader(), new DebugBlockReader());
     }
 
-    public static FileReader newFileReader(
+    private static FileReader newFileReader(
             FileId fileId, File file, ByteBufAllocator allocator, TailReader fileTailReader, BlockReader blockReader
     ) {
         return new FileReader(file, fileId, allocator, fileTailReader, blockReader);

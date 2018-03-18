@@ -86,8 +86,7 @@ public class ManagedReferenceTest {
 
     @Test(expected = IllegalReferenceCountException.class)
     public void test_failedVerification_throwsIllegalRef() {
-        final int sampleInt = 123;
-        final ManagedReference<Integer> mr = new ManagedReference<>(sampleInt, integer -> false, deallocator);
+        new ManagedReference<>(123, integer -> false, deallocator);
     }
 
     @Test

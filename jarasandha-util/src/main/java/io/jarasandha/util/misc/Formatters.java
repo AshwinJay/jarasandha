@@ -21,7 +21,7 @@ import java.util.Locale;
 /**
  * Created by ashwin.jayaprakash.
  */
-public abstract class Formatters {
+public final class Formatters {
     private Formatters() {
     }
 

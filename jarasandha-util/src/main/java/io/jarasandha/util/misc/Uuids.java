@@ -25,7 +25,7 @@ import static io.netty.buffer.Unpooled.wrappedBuffer;
 /**
  * Created by ashwin.jayaprakash.
  */
-public abstract class Uuids {
+public final class Uuids {
     public static final int UUID_BYTES_SIZE = 16;
 
     private Uuids() {
@@ -41,6 +41,10 @@ public abstract class Uuids {
 
     public static byte[] bytesFromUuid(UUID uuid) {
         return UUIDUtil.asByteArray(uuid);
+    }
+
+    public static ByteBuf byteBufFromUuid(UUID uuid) {
+        return wrappedBuffer(bytesFromUuid(uuid));
     }
 
     /**

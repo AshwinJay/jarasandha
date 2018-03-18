@@ -20,6 +20,7 @@ import io.netty.util.IllegalReferenceCountException;
 import io.netty.util.ReferenceCounted;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.constraints.NotNull;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -36,19 +37,33 @@ public final class ManagedReference<T> extends AbstractReferenceCounted {
     private static final String ERR_MSG_DEALLOCATION_FAILED = "Error occurred during de-allocation";
     private static final IllegalReferenceCountException FIXED_EX_VERIFICATION_FAILED =
             new IllegalReferenceCountException(ERR_MSG_VERIFICATION_FAILED);
+
+    /**
+     * If this reference is null, then it means that it has already been de-allocated or is being done so in another
+     * thread.
+     */
     private volatile T actualRef;
+    /**
+     * See comments on {@link #actualRef} about null.
+     */
     private volatile Predicate<T> retainVerifier;
+    /**
+     * See comments on {@link #actualRef} about null.
+     */
     private volatile Consumer<T> deallocator;
 
     /**
-     * @param actualRef
-     * @param retainVerifier Called with "actualRef" as the parameter before returning from {@link #retain()} or {@link
-     *                       #retain(int)}. If false is returned, then the "retain" method throws an
-     *                       {@link IllegalReferenceCountException}.
-     * @param deallocator    Called automatically only when the {@link #refCnt()} drops to 0 with "actualRef" as the
-     *                       parameter.
+     * @param actualRef      The actual reference that is being wrapped by the "managed reference counted" semantics.
+     * @param retainVerifier Before returning from {@link #retain()} or {@link #retain(int)} call, this verifier is
+     *                       consulted with "actualRef" as the parameter. If false is returned, then the "retain" method
+     *                       throws an {@link IllegalReferenceCountException}.
+     * @param deallocator    Called automatically (and atomically) only when the {@link #refCnt()} drops to 0 with
+     *                       "actualRef" as the parameter.
+     * @see #newManagedReference(AutoCloseable) for a simpler way to construct the object.
      */
-    public ManagedReference(T actualRef, Predicate<T> retainVerifier, Consumer<T> deallocator) {
+    public ManagedReference(
+            @NotNull T actualRef, @NotNull Predicate<T> retainVerifier, @NotNull Consumer<T> deallocator
+    ) {
         this.actualRef = checkNotNull(actualRef, "actualRef");
         this.retainVerifier = checkNotNull(retainVerifier, "retainVerifier");
         this.deallocator = checkNotNull(deallocator, "deallocator");
@@ -91,6 +106,7 @@ public final class ManagedReference<T> extends AbstractReferenceCounted {
 
     @Override
     public ManagedReference<T> retain(int increment) {
+        super.retain(increment);
         try {
             verify(actualRef, retainVerifier);
         } catch (IllegalReferenceCountException e) {
@@ -102,18 +118,19 @@ public final class ManagedReference<T> extends AbstractReferenceCounted {
             }
             throw e;
         }
-        super.retain(increment);
         return this;
     }
 
     /**
+     * Verify that the reference is still valid.
+     *
      * @param reference
      * @param verifier
      * @param <T>
      * @throws IllegalReferenceCountException
      */
     private static <T> void verify(T reference, Predicate<T> verifier) {
-        if (!verifier.test(reference)) {
+        if (reference == null || verifier == null || !verifier.test(reference)) {
             throw FIXED_EX_VERIFICATION_FAILED;
         }
     }
@@ -131,15 +148,11 @@ public final class ManagedReference<T> extends AbstractReferenceCounted {
 
     @Override
     protected void deallocate() {
-        final T actualRefCopy = this.actualRef;
-        final Consumer<T> deallocatorCopy = deallocator;
+        final T localRef = this.actualRef;
+        final Consumer<T> localDeallocator = deallocator;
         this.actualRef = null;
         this.deallocator = null;
         this.retainVerifier = null;
-        try {
-            deallocatorCopy.accept(actualRefCopy);
-        } catch (Throwable throwable) {
-            log.warn(ERR_MSG_DEALLOCATION_FAILED, throwable);
-        }
+        localDeallocator.accept(localRef);
     }
 }

@@ -15,14 +15,10 @@
  */
 package io.jarasandha.util.misc;
 
-import java.util.Optional;
-
-import static com.google.common.base.Strings.emptyToNull;
-
 /**
  * Created by ashwin.jayaprakash.
  */
-public abstract class MoreThrowables {
+public final class MoreThrowables {
     private MoreThrowables() {
     }
 
@@ -47,19 +43,5 @@ public abstract class MoreThrowables {
      */
     public static RuntimeException propagate(InterruptedException ie) {
         throw propagate(ie.toString(), ie);
-    }
-
-    /**
-     * @param throwable
-     * @return The first non-null and non-empty {@link Throwable#getMessage()} in the exception chain (if any in the
-     * chain do have it).
-     */
-    public static Optional<String> getFirstNotNullRecord(Throwable throwable) {
-        String record = null;
-        while (record == null && throwable != null) {
-            record = emptyToNull(throwable.getMessage());
-            throwable = throwable.getCause();
-        }
-        return Optional.ofNullable(record);
     }
 }

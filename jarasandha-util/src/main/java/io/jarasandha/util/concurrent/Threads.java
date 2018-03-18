@@ -18,7 +18,7 @@ package io.jarasandha.util.concurrent;
 /**
  * Created by ashwin.jayaprakash.
  */
-public abstract class Threads {
+public final class Threads {
     private Threads() {
     }
 

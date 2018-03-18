@@ -57,23 +57,24 @@ import static org.junit.Assert.assertTrue;
  * Created by ashwin.jayaprakash.
  */
 @Slf4j
-public class FileReadersTest extends AbstractTestWithAllocator {
+public class ReadersTest extends AbstractTestWithAllocator {
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
     @Test
     public void testOpsOnBlankFile() throws IOException {
         final Files files = new Files(folder.newFolder());
-        final FileReaders readers = new FileReaders(new FileReadersParameters()
-                .files(files)
-                .fileEventListener(new DefaultFileEventListener())
-                .blockEventListener(key -> {
-                })
-                .allocator(allocator)
-                .metricRegistry(new MetricRegistry())
-                .expireAfterAccess(Duration.ofSeconds(0))
-                .maxOpenFiles(0)
-                .maxTotalUncompressedBlockBytes(0)
+        final Readers readers = new Readers(
+                new ReadersParameters()
+                        .files(files)
+                        .fileEventListener(new DefaultFileEventListener())
+                        .blockEventListener(key -> {
+                        })
+                        .allocator(allocator)
+                        .metricRegistry(new MetricRegistry())
+                        .expireAfterAccess(Duration.ofSeconds(0))
+                        .maxOpenFiles(0)
+                        .maxTotalUncompressedBlockBytes(0)
         );
 
         final FileId fileId = new FileId(Uuids.newUuid(), "dat");
@@ -196,7 +197,7 @@ public class FileReadersTest extends AbstractTestWithAllocator {
             }
         };
         final BlockingQueue<FileBlockPosition> blockRemovalIndicator = new LinkedBlockingQueue<>();
-        final FileReadersParameters parameters = new FileReadersParameters()
+        final ReadersParameters parameters = new ReadersParameters()
                 .files(files)
                 .fileEventListener(fileEventListener)
                 .blockEventListener(blockRemovalIndicator::offer)
@@ -205,7 +206,7 @@ public class FileReadersTest extends AbstractTestWithAllocator {
                 .expireAfterAccess(Duration.ofHours(1))
                 .maxOpenFiles(numFiles)
                 .maxTotalUncompressedBlockBytes(MAX_VALUE);
-        final FileReaders readers = new FileReaders(parameters);
+        final Readers readers = new Readers(parameters);
 
         final Pair<TestData[], List<AccessData>> pair = prepareData(numFiles, numRecordsPerFile, files);
         final TestData[] testData = pair.getOne();
@@ -310,7 +311,7 @@ public class FileReadersTest extends AbstractTestWithAllocator {
                 removeWaiter.countDown();
             }
         };
-        final FileReadersParameters parameters = new FileReadersParameters()
+        final ReadersParameters parameters = new ReadersParameters()
                 .files(files)
                 .fileEventListener(handler)
                 .blockEventListener(key -> {
@@ -320,7 +321,7 @@ public class FileReadersTest extends AbstractTestWithAllocator {
                 .expireAfterAccess(Duration.ofHours(1))
                 .maxOpenFiles(numFiles)
                 .maxTotalUncompressedBlockBytes(MAX_VALUE);
-        final FileReaders readers = new FileReaders(parameters);
+        final Readers readers = new Readers(parameters);
 
         final Pair<TestData[], List<AccessData>> pair = prepareData(numFiles, numRecordsPerFile, files);
         final TestData[] testData = pair.getOne();

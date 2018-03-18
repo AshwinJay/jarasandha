@@ -29,7 +29,7 @@ import java.util.Map.Entry;
 
 import static org.slf4j.Logger.ROOT_LOGGER_NAME;
 
-public abstract class ProgrammaticLogManager {
+public final class ProgrammaticLogManager {
     public static final String LOG_PATTERN_LONG = "[%date{ISO8601}] [%-5level] [%thread] [%logger{16}] - %msg%n";
     public static final String LOG_PATTERN_SMALL = "[%relative] %msg%n";
 

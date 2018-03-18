@@ -15,6 +15,8 @@
  */
 package io.jarasandha.store.api;
 
+import io.jarasandha.store.api.StoreException.RecordTooBigException;
+import io.jarasandha.store.api.StoreException.StoreFullException;
 import io.jarasandha.util.io.Persistable;
 import io.jarasandha.util.misc.CallerMustRelease;
 import io.netty.buffer.ByteBuf;
@@ -43,7 +45,7 @@ public interface StoreWriter<STORE_ID extends Persistable> extends AutoCloseable
      * If block compression is enabled ({@link #isBlocksCompressed()}), then the block is first compressed and then the
      * compressed block is written.
      *
-     * @param value
+     * @param value The {@link ByteBuf#readerIndex()} will get modified after this call returns!
      * @return
      * @throws StoreFullException    When the store cannot accommodate any further writes. This means, the next step is
      *                               to call {@link #close()}.

@@ -34,7 +34,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Getter
 @Setter
 @Accessors(fluent = true)
-public class FileReadersParameters implements Validateable<FileReadersParameters> {
+public class ReadersParameters implements Validateable<ReadersParameters> {
     private Files files;
     private FileEventListener fileEventListener;
     private BlockEventListener blockEventListener;
@@ -58,7 +58,7 @@ public class FileReadersParameters implements Validateable<FileReadersParameters
     private long maxTotalUncompressedBlockBytes;
 
     @Override
-    public FileReadersParameters validate() {
+    public ReadersParameters validate() {
         checkNotNull(files, "files");
         checkNotNull(fileEventListener, "fileHandler");
         checkNotNull(blockEventListener, "blockEventListener");

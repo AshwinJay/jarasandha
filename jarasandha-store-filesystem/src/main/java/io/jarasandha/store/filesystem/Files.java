@@ -143,7 +143,7 @@ public final class Files {
     }
 
     /**
-     * @return {@link Pair} of the {@link File} and the "correct", full name of the file.
+     * @return {@link Pair}s of the {@link File} and the "UUID" of the file. These are all the files under the directory.
      */
     @CallerMustRelease
     public Stream<Pair<File, String>> showAll() {
@@ -168,9 +168,9 @@ public final class Files {
                             }
                             file = file.getParentFile();
                         }
-                        final StringBuilder stringBuilder = new StringBuilder(stringLength);
-                        nameStack.forEach(stringBuilder::append);
 
+                        StringBuilder stringBuilder = new StringBuilder(stringLength);
+                        nameStack.forEach(stringBuilder::append);
                         return Tuples.pair(actualFile, stringBuilder.toString());
                     });
         } catch (IOException e) {

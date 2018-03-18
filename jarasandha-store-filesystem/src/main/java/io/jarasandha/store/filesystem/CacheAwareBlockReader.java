@@ -48,7 +48,7 @@ class CacheAwareBlockReader implements BlockReader, AutoCloseable {
     private final MetricRegistry metricRegistry;
     private final String metricsFamily;
 
-    CacheAwareBlockReader(FileReadersParameters parameters, String metricsFamily) {
+    CacheAwareBlockReader(ReadersParameters parameters, String metricsFamily) {
         this(
                 Caffeine
                         .<FileBlockPosition, BlockWithRecordOffsets>newBuilder()

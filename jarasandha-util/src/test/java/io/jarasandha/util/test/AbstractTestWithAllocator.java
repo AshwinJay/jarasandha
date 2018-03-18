@@ -38,7 +38,7 @@ public abstract class AbstractTestWithAllocator extends AbstractTest {
     }
 
     @Before
-    public final void setUpAllocator() throws Exception {
+    public final void setUpAllocator() {
         allocator = new PooledByteBufAllocator(true);
         ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.SIMPLE);
     }

@@ -34,7 +34,7 @@ import static io.jarasandha.util.misc.ByteSize.Unit.MEGABYTES;
 @Setter
 @Accessors(fluent = true)
 @ToString
-public class FileWriterParameters extends Parameters implements Validateable<FileWriterParameters> {
+public class WriterParameters extends Parameters implements Validateable<WriterParameters> {
     public static final int SIZE_CHUNK_BYTES = checkedCast(Unit.KILOBYTES.toBytes() * 16);
     private long fileSizeBytesLimit = MEGABYTES.toBytes() * 256;
     private int uncompressedBytesPerBlockLimit = checkedCast(Unit.MEGABYTES.toBytes() * 16);
@@ -43,7 +43,7 @@ public class FileWriterParameters extends Parameters implements Validateable<Fil
     private int writeChunkSizeBytes = SIZE_CHUNK_BYTES;
 
     @Override
-    public FileWriterParameters validate() {
+    public WriterParameters validate() {
         checkArgument(fileSizeBytesLimit > 0, "fileSizeBytesLimit");
         checkArgument(uncompressedBytesPerBlockLimit > 0, "uncompressedBytesPerBlockLimit");
         checkArgument(uncompressedBytesPerBlockLimit < fileSizeBytesLimit, "uncompressedBytesPerBlockLimit");
