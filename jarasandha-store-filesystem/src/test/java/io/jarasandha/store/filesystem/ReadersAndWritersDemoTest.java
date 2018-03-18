@@ -169,20 +169,16 @@ public class ReadersAndWritersDemoTest extends AbstractTest {
         try (Readers readers = new Readers(readersParameters)) {
             for (SampleRecord sampleRecord : sampleRecordsToVerify) {
                 //Read the sample records and compare them with the expected value.
-                log.info("Reading [{}] from file [{}] {}", sampleRecord.recordLocation, sampleRecord.fileId, readers);
+                log.info("Reading [{}] from file [{}]", sampleRecord.recordLocation, sampleRecord.fileId);
 
+                final ByteBuf record = readers.readRecord(sampleRecord.fileId, sampleRecord.recordLocation);
                 try {
-                    final ByteBuf record = readers.readRecord(sampleRecord.fileId, sampleRecord.recordLocation);
-                    try {
-                        byte[] bytes = ByteBufUtil.getBytes(record);
-                        UUID actual = Uuids.uuidFromBytes(bytes);
-                        UUID expected = sampleRecord.uuid;
-                        assertEquals(expected, actual);
-                    } finally {
-                        record.release();
-                    }
-                } catch (Exception e) {
-                    log.error("FATAL", e);
+                    byte[] bytes = ByteBufUtil.getBytes(record);
+                    UUID actual = Uuids.uuidFromBytes(bytes);
+                    UUID expected = sampleRecord.uuid;
+                    assertEquals(expected, actual);
+                } finally {
+                    record.release();
                 }
             }
         }
