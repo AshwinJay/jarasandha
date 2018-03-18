@@ -77,25 +77,15 @@ The name (`Jarasandha`) is a reference to an [Indian mythological character name
 The Jarasandha library is licensed under the [Apache License](LICENSE).
 
 # Basics
-Read & Write
+[ReadersAndWritersDemoTest.java](jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the high level APIs.
+
+A [command line tool](jarasandha-store-filesystem/src/main/java/io/jarasandha/store/filesystem/cli) to import and inspect encoded files is also available.
 
 Efficiency
-
-Example - based on Importer and FileReadersTest
 
 Compression, blocks, memory efficiency of ByteBuf, native heap size
 
 Pre-reqs: Java 8, Maven
-
-# Example
-
-FileWriters
-
-FileReaders
-
-Files
-
-FileId
 
 # Architecture
 
