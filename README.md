@@ -1,6 +1,23 @@
 [![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![Code Coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c46c16421cb04033b0439eb385917bd2)](https://www.codacy.com/app/AshwinJay/jarasandha?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AshwinJay/jarasandha&amp;utm_campaign=Badge_Grade)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ashwinjay/jarasandha-store-filesystem.svg)](http://mvnrepository.com/artifact/io.github.ashwinjay/jarasandha-store-filesystem) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
 
+<!-- ts -->
+<!-- cat README.md | ~/dump/gh-md-toc/gh-md-toc (From https://github.com/ekalinin/github-markdown-toc) -->
+  * [Introduction](#introduction)
+    * [What is it?](#what-is-it)
+        * [File](#file)
+        * [Writer](#writer)
+        * [Reader](#reader)
+    * [What it is not](#what-it-is-not)
+    * [What's with the name?](#whats-with-the-name)
+    * [License](#license)
+  * [Possible use cases](#possible-use-cases)
+    * [Hot-cold store](#hot-cold-store)
+  * [Basics](#basics)
+  * [Architecture](#architecture)
+  * [Misc](#misc)
+<!-- te -->
+
 # Introduction
 
 ### What is it?
