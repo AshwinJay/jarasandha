@@ -36,12 +36,15 @@ Jarasandha does not aim to compete with systems or libraries like [Apache ORC](h
 3. It has no opinion in terms of what you store as a record but it can compress a block that has multiple records before storing them to the file
 4. It does not provide querying or searching based on keys or values rather on logical positions
 
-# License
+### What's with the name?
+The name (`Jarasandha`) is a reference to an [Indian mythological character named Jarasandha](https://en.wikipedia.org/wiki/Jarasandha) who was put back together from two halves. I found the name vaguely related to this Java library which puts your records back together from blocks of compressed records in a file. Well, I did say - "vaguely related".
+
+### License
 The Jarasandha library is licensed under the [Apache License](LICENSE).
 
-### Possible use cases
+# Possible use cases
 
-#### Hot-cold store
+### Hot-cold store
 
 Store records in Jarasandha, move the files out to object stores like [Amazon S3](https://aws.amazon.com/s3/) or [Minio](https://minio.io/) when they are not in use.
 
@@ -51,9 +54,7 @@ Assuming that the keys and metadata to service queries are much smaller than the
 
 See [Hot-cold store](doc/hot-cold-store.md) for details.
 
-### What's with the name?
-The name (`Jarasandha`) is a reference to an [Indian mythological character named Jarasandha](https://en.wikipedia.org/wiki/Jarasandha) who was put back together from two halves. I found the name vaguely related to this Java library which puts your records back together from blocks of compressed records in a file. Well, I did say - "vaguely related".
-⚠️ This document is a work in progress ⚠️
+⚠️ The content below is a work in progress ⚠️
 
 # Basics
 [ReadersAndWritersDemoTest.java](jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the high level APIs.
