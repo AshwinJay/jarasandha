@@ -1,27 +1,6 @@
 [![Build Status](https://travis-ci.org/AshwinJay/jarasandha.svg?branch=master)](https://travis-ci.org/AshwinJay/jarasandha)  [![Code Coverage](https://codecov.io/gh/AshwinJay/jarasandha/branch/master/graph/badge.svg)](https://codecov.io/gh/AshwinJay/jarasandha) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c46c16421cb04033b0439eb385917bd2)](https://www.codacy.com/app/AshwinJay/jarasandha?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AshwinJay/jarasandha&amp;utm_campaign=Badge_Grade)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ashwinjay/jarasandha-store-filesystem.svg)](http://mvnrepository.com/artifact/io.github.ashwinjay/jarasandha-store-filesystem) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/AshwinJay/jarasandha/blob/master/LICENSE)
 
-⚠️ This document is a work in progress ⚠️
-
-<!--ts-->
-# Table of Contents
-
-   * [Introduction](#introduction)
-     * [What is it?](#what-is-it)
-        * [File](#file)
-        * [Writer](#writer)
-        * [Reader](#reader)
-     * [What it is not](#what-it-is-not)
-     * [Possible use cases](#possible-use-cases)
-        * [Hot-cold store](#hot-cold-store)
-     * [What's with the name?](#whats-with-the-name)
-   * [License](#license)
-   * [Basics](#basics)
-   * [Example](#example)
-   * [Architecture](#architecture)
-   * [Misc](#misc)
-<!--te-->
-
 # Introduction
 
 ### What is it?
@@ -57,6 +36,8 @@ Jarasandha does not aim to compete with systems or libraries like [Apache ORC](h
 3. It has no opinion in terms of what you store as a record but it can compress a block that has multiple records before storing them to the file
 4. It does not provide querying or searching based on keys or values rather on logical positions
 
+# License
+The Jarasandha library is licensed under the [Apache License](LICENSE).
 
 ### Possible use cases
 
@@ -72,9 +53,7 @@ See [Hot-cold store](doc/hot-cold-store.md) for details.
 
 ### What's with the name?
 The name (`Jarasandha`) is a reference to an [Indian mythological character named Jarasandha](https://en.wikipedia.org/wiki/Jarasandha) who was put back together from two halves. I found the name vaguely related to this Java library which puts your records back together from blocks of compressed records in a file. Well, I did say - "vaguely related".
-
-# License
-The Jarasandha library is licensed under the [Apache License](LICENSE).
+⚠️ This document is a work in progress ⚠️
 
 # Basics
 [ReadersAndWritersDemoTest.java](jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the high level APIs.
