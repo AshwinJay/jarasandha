@@ -71,10 +71,19 @@ Assuming that the keys and metadata to service queries are much smaller than the
 
 See [Hot-cold store](doc/hot-cold-store.md) for details.
 
-⚠️ The content below is a work in progress ⚠️
-
 # Basics
-[ReadersAndWritersDemoTest.java](jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the high level APIs.
+[ReadersAndWritersDemoTest](jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the APIs:
+
+* [StoreReader](jarasandha-store/src/main/java/io/jarasandha/store/api/StoreReader.java)
+* [StoreWriter](jarasandha-store/src/main/java/io/jarasandha/store/api/StoreWriter.java)
+* [Index](jarasandha-store/src/main/java/io/jarasandha/store/api/Index.java)
+* [Block](jarasandha-store/src/main/java/io/jarasandha/store/api/BlockWithRecordOffsets.java)
+
+----
+
+⚠️ The following content is work in progress ⚠️
+
+----
 
 A [command line tool](jarasandha-store-filesystem/src/main/java/io/jarasandha/store/filesystem/cli) to import and inspect encoded files is also available.
 
