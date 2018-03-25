@@ -14,14 +14,14 @@
   * [Possible use cases](#possible-use-cases)
     * [Hot-cold store](#hot-cold-store)
   * [Basics](#basics)
+  * [Advanced](#advanced)
   * [Architecture](#architecture)
-  * [Misc](#misc)
 <!-- te -->
 
 # Introduction
 
 ### What is it?
-Jarasandha is a small Java library to help build an archive of records. It has very few moving parts, embraces immutability, efficient compression, buffer management and zero copy transfer. It delegates advanced functions to external services using interfaces.
+Jarasandha is a small Java (version 8+) library to help build an archive of records. It has very few moving parts, embraces immutability and provides efficient compression, buffer management and zero copy transfer. It delegates advanced functions to external services using interfaces.
 
 It is composed of these parts:
 
@@ -72,12 +72,12 @@ Assuming that the keys and metadata to service queries are much smaller than the
 See [Hot-cold store](doc/hot-cold-store.md) for details.
 
 # Basics
-[ReadersAndWritersDemoTest](jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the APIs:
+[ReadersAndWritersDemoTest](https://github.com/AshwinJay/jarasandha/blob/master/jarasandha-store-filesystem/src/test/java/io/jarasandha/store/filesystem/ReadersAndWritersDemoTest.java) demonstrates how to write to files and also to read them back using the APIs:
 
-* [StoreReader](jarasandha-store/src/main/java/io/jarasandha/store/api/StoreReader.java)
-* [StoreWriter](jarasandha-store/src/main/java/io/jarasandha/store/api/StoreWriter.java)
-* [Index](jarasandha-store/src/main/java/io/jarasandha/store/api/Index.java)
-* [Block](jarasandha-store/src/main/java/io/jarasandha/store/api/BlockWithRecordOffsets.java)
+* [StoreReader](https://github.com/AshwinJay/jarasandha/blob/master/jarasandha-store/src/main/java/io/jarasandha/store/api/StoreReader.java)
+* [StoreWriter](https://github.com/AshwinJay/jarasandha/blob/master/jarasandha-store/src/main/java/io/jarasandha/store/api/StoreWriter.java)
+* [Index](https://github.com/AshwinJay/jarasandha/blob/master/jarasandha-store/src/main/java/io/jarasandha/store/api/Index.java)
+* [Block](https://github.com/AshwinJay/jarasandha/blob/master/jarasandha-store/src/main/java/io/jarasandha/store/api/BlockWithRecordOffsets.java)
 
 ----
 
@@ -85,13 +85,19 @@ See [Hot-cold store](doc/hot-cold-store.md) for details.
 
 ----
 
-A [command line tool](jarasandha-store-filesystem/src/main/java/io/jarasandha/store/filesystem/cli) to import and inspect encoded files is also available.
+# Advanced
+
+A [command line tool](https://github.com/AshwinJay/jarasandha/blob/master/jarasandha-store-filesystem/src/main/java/io/jarasandha/store/filesystem/cli) to import and inspect encoded files is also available.
 
 Efficiency
 
-Compression, blocks, memory efficiency of ByteBuf, native heap size
+Compression, blocks, memory efficiency of ByteBuf, native heap size.
 
-Pre-reqs: Java 8, Maven
+Zero copy with compressed index and uncompressed blocks. Zip the entire file while archiving.
+
+Writing - NoOpFileWriteProgressListener to push files to S3
+
+Reading - DefaultFileEventListener to build archiving and retrieval
 
 # Architecture
 
@@ -104,11 +110,3 @@ Logical record position, need to secondary store
 Compression and caching
 
 Writer and reader efficiency - ButeBuf
-
-# Misc
-
-CLI importer
-
-Writing - NoOpFileWriteProgressListener to push files to S3
-
-Reading - DefaultFileEventListener to build archiving and retrieval
